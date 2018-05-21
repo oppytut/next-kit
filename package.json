@@ -1,0 +1,9 @@
+{
+  "name": "next-kit",
+  "version": "0.0.1",
+  "description": "next-kit",
+  "main": "index.js",
+  "author": "oppytut",
+  "license": "MIT",
+  "private": true
+}
