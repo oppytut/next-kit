@@ -22,6 +22,7 @@ export default class MyDocument extends Document {
 					<script src="/static/others/bootstrap/jquery-3.3.1.slim.min.js"></script>
 					<script src="/static/others/bootstrap/proper.min.js"></script>
 					<script src="/static/others/bootstrap/bootstrap.min.js"></script>
+					<script src="/static/others/fontawesome/fontawesome-all.js"></script>
 				</body>
 			</html>
 		)
