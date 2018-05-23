@@ -4,7 +4,7 @@ class Index extends Component {
 	render() {
 		return(
 			<div>
-				Bismillah!
+				<h1>Hi, i am styled by Bootstrap!</h1>
 			</div>
 		);
 	}
