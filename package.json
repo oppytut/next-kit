@@ -1,8 +1,7 @@
 {
-  "name": "next-kit",
+  "name": "e-ling",
   "version": "0.0.1",
-  "description": "next-kit",
-  "main": "index.js",
+  "description": "A Next.js Based Project Kit",
   "author": "oppytut",
   "license": "MIT",
   "private": true,
