@@ -11,8 +11,14 @@ export default class MyDocument extends Document {
 		return(
 			<html>
 				<Head>
+					{/* Favicon */}
+					<link rel="icon" href="/static/favicons/favicon-16.ico" size="16x16" />
+					<link rel="icon" href="/static/favicons/favicon-32.ico" size="32x32" />
+					<link rel="icon" href="/static/favicons/favicon-48.ico" size="48x48" />
+
 					{/* CSS */}
 					<link rel="stylesheet" href="/static/others/bootstrap/bootstrap.min.css" />
+					<link rel="stylesheet" href="/static/css/main.css" />
 				</Head>
 				<body className="custom_class">
 					<Main />
