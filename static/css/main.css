@@ -1,0 +1,18 @@
+@font-face {
+	font-family: NunitoSans-Regular;
+	src: url(/static/fonts/NunitoSans/NunitoSans-Regular.ttf);
+}
+
+@font-face {
+	font-family: NunitoSans-Bold;
+	src: url(/static/fonts/NunitoSans/NunitoSans-Bold.ttf);
+}
+
+@font-face {
+	font-family: NunitoSans-Italic;
+	src: url(/static/fonts/NunitoSans/NunitoSans-Italic.ttf);
+}
+
+body {
+	font-family: NunitoSans-Regular;
+}
