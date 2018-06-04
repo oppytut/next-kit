@@ -1,9 +1,10 @@
-import React, {Component} from 'react'; // React is required
+import React, { Component } from 'react'; // React is required
 
 class Index extends Component {
 	render() {
-		return(
+		return (
 			<div>
+				Hi
 			</div>
 		);
 	}
