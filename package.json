@@ -1,7 +1,7 @@
 {
-  "name": "e-ling",
+  "name": "lackon",
   "version": "0.0.1",
-  "description": "A Next.js Based Project Kit",
+  "description": "A Next.js, Redux.js, Ant Design, and SASS Based Project Kit",
   "author": "oppytut",
   "license": "MIT",
   "private": true,
