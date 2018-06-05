@@ -15,7 +15,6 @@ export default class MyDocument extends Document {
 					<link rel="icon" href="/static/favicons/16.ico" size="16x16" />
 
 					{/* CSS */}
-					<link rel="stylesheet" href="/static/others/semantic-ui/semantic.min.css" />
 					<link rel="stylesheet" href="/static/css/main.css" />
 				</Head>
 				<body className="custom_class">
