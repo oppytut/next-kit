@@ -1,1 +1,1 @@
-next-kit
+petuah-client
