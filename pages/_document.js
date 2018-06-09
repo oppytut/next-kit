@@ -1,13 +1,27 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet, injectGlobal } from 'styled-components';
+import NunitoSansFont from '../static/fonts/NunitoSans/NunitoSans-Regular.ttf';
+import bodyStyle from './bodyStyle';
+
+injectGlobal`
+	@font-face {
+		font-family: NunitoSans-Regular;
+		src: url('${NunitoSansFont}');
+	}
+`;
 
 export default class MyDocument extends Document {
-	static async getInitialProps(ctx) {
-		const initialProps = await Document.getInitialProps(ctx);
-		return { ...initialProps };
+	static getInitialProps({ renderPage }) {
+		const sheet = new ServerStyleSheet();
+		const page = renderPage(App => props => sheet.collectStyles(<App {...props} />));
+		const styleTags = sheet.getStyleElement();
+		return { ...page, styleTags };
 	}
 
 	render() {
+		const { styleTags } = this.props;
+
 		return (
 			<html>
 				<Head>
@@ -16,9 +30,9 @@ export default class MyDocument extends Document {
 
 					{/* CSS */}
 					<link rel='stylesheet' href='/_next/static/style.css' />
-					<link rel="stylesheet" href="/static/css/main.css" />
+					{styleTags}
 				</Head>
-				<body className="custom_class">
+				<body className="custom_class" style={bodyStyle}>
 					<Main />
 
 					<NextScript />
