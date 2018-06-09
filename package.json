@@ -1,7 +1,7 @@
 {
-  "name": "lackon",
+  "name": "petuah-client",
   "version": "0.0.1",
-  "description": "A Next.js, Redux.js, Ant Design, and SASS Based Project Kit",
+  "description": "A Next.js, Redux.js, Ant Design, and Styled Components Based Project Kit",
   "author": "oppytut",
   "license": "MIT",
   "private": true,
