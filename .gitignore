@@ -30,5 +30,6 @@ node_modules
 # NPM
 package-lock.json
 
-# Next.js
-.next
+# Next.js - compiled source
+# .next
+.build
