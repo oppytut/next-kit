@@ -1,6 +1,6 @@
 import debug from 'debug';
 
-const logName = 'todo action';
+const logName = 'quote action';
 const log = {
 	trace: debug(`${logName}:trace`),
 	debug: debug(`${logName}:debug`),
@@ -10,11 +10,11 @@ const log = {
 	error: debug(`${logName}:error`)
 };
 
-export const SET_TODOS = 'SET_TODOS';
-export const SET_TODO = 'SET_TODO';
-export const ADD_TODO = 'ADD_TODO';
-export const UPDATE_TODO = 'UPDATE_TODO';
-export const DEL_TODO = 'DEL_TODO';
+export const SET_QUOTES = 'SET_QUOTES';
+export const SET_QUOTE = 'SET_QUOTE';
+export const ADD_QUOTE = 'ADD_QUOTE';
+export const UPDATE_QUOTE = 'UPDATE_QUOTE';
+export const DEL_QUOTE = 'DEL_QUOTE';
 
 function handleResponse(response) {
 	if(response.ok) {
@@ -36,24 +36,24 @@ function parseJson(response) {
  * reducer operation
  */
 
-export function setTodos(todos) {
-	return { type: SET_TODOS, todos };
+export function setQuotes(quotes) {
+	return { type: SET_QUOTES, quotes };
 }
 
-export function setTodo(todo) {
-	return { type: SET_TODO, todo };
+export function setQuote(quote) {
+	return { type: SET_QUOTE, quote };
 }
 
-export function addTodo(todo) {
-	return { type: ADD_TODO, todo };
+export function addQuote(quote) {
+	return { type: ADD_QUOTE, quote };
 }
 
-export function updateTodo(todo) {
-	return { type: UPDATE_TODO, todo };
+export function updateQuote(quote) {
+	return { type: UPDATE_QUOTE, quote };
 }
 
-export function delTodo(todo) {
-	return { type: DEL_TODO, todo };
+export function delQuote(quote) {
+	return { type: DEL_QUOTE, quote };
 }
 
 /**
@@ -62,21 +62,21 @@ export function delTodo(todo) {
 
 const host = 'http://localhost:8000';
 
-export function getTodos(data) {
-	return fetch(`${host}/api/todo`)
+export function getQuotes(data) {
+	return fetch(`${host}/api/quote`)
 		.then(handleResponse)
 		.then(parseJson);
 }
 
-export function getTodo(id) {
-	return fetch(`${host}/api/todo/${id}`)
+export function getQuote(id) {
+	return fetch(`${host}/api/quote/${id}`)
 		.then(handleResponse)
 		.then(parseJson);
 }
 
-export function todoTodo(data) {
-	return fetch(`${host}/api/todo`, {
-		method: 'todo',
+export function quoteQuote(data) {
+	return fetch(`${host}/api/quote`, {
+		method: 'quote',
 		body: JSON.stringify(data),
 		headers: { 'Content-Type': 'application/json' }
 	})
@@ -84,8 +84,8 @@ export function todoTodo(data) {
 		.then(parseJson);
 }
 
-export function putTodo(data) {
-	return fetch(`${host}/api/todo/${data.id}`, {
+export function putQuote(data) {
+	return fetch(`${host}/api/quote/${data.id}`, {
 		method: 'put',
 		body: JSON.stringify(data),
 		headers: { 'Content-Type': 'application/json' }
@@ -94,8 +94,8 @@ export function putTodo(data) {
 		.then(parseJson);
 }
 
-export function deleteTodo(id) {
-	return fetch(`${host}/api/todo/${id}`, {
+export function deleteQuote(id) {
+	return fetch(`${host}/api/quote/${id}`, {
 		method: 'delete',
 		headers: { 'Content-Type': 'application/json' }
 	})

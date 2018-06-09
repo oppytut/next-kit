@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import { composeWithDevTools } from 'redux-devtools-extension'; // development mode
 import thunk from 'redux-thunk';
-import reducer from '../reducers';
+import reducer from '../src/reducers';
 
 const makeStore = (initialState, options) => createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
 

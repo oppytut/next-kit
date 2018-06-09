@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import todo from './todo';
+import quote from './quote';
 
 export default combineReducers({
-	todo
+	quote
 });
