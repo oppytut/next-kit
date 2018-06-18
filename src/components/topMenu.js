@@ -2,11 +2,9 @@ import React, { Component } from 'react'; // must be in scope
 import { Menu } from 'antd';
 import mzLogger from '../libs/mz-logger';
 
-// style
 import style from '../pages/style';
 
-// static file
-import MenuLogo from '../static/icons/24.png';
+import menuLogo from '../static/icons/24.png';
 
 const log = mzLogger('TopMenu');
 
@@ -34,7 +32,7 @@ class TopMenu extends Component {
 					fontSize: '14px'
 				}}>
 					<Menu.Item key="home">
-						<img src={MenuLogo} alt="" style={{
+						<img src={menuLogo} alt="" style={{
 							marginRight: '5px'
 						}} />
 						Petuah

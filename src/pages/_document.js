@@ -3,8 +3,8 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet, injectGlobal } from 'styled-components';
 import htmlescape from 'htmlescape';
 
-import NunitoSansFont from '../static/fonts/NunitoSans/NunitoSans-Regular.ttf';
-import Favicon16 from '../static/favicons/16.ico';
+import nunitoSansFont from '../static/fonts/NunitoSans/NunitoSans-Regular.ttf';
+import favicon16 from '../static/favicons/16.ico';
 
 import style from './style';
 
@@ -14,7 +14,7 @@ const env = { NODE_ENV };
 injectGlobal`
 	@font-face {
 		font-family: NunitoSans-Regular;
-		src: url('${NunitoSansFont}');
+		src: url('${nunitoSansFont}');
 	}
 `;
 
@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
 			<html>
 				<Head>
 					{/* Favicon */}
-					<link rel="icon" href={Favicon16} size="16x16" />
+					<link rel="icon" href={favicon16} size="16x16" />
 
 					{/* CSS */}
 					<link rel='stylesheet' href='/_next/static/style.css' />

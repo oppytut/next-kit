@@ -2,26 +2,22 @@ import React, { Component } from 'react'; // must be in scope
 import { Card } from 'antd';
 import styled, { injectGlobal } from 'styled-components';
 
-// static file
-import NunitoSansFont from '../static/fonts/NunitoSans/NunitoSans-Regular.ttf';
-import FlamencoFont from '../static/fonts/Flamenco/Flamenco-Regular.ttf';
+import nunitoSansFont from '../static/fonts/NunitoSans/NunitoSans-Regular.ttf';
+import flamencoFont from '../static/fonts/Flamenco/Flamenco-Regular.ttf';
 
-// style
 import style from '../pages/style';
 
-// inject to CSS
 injectGlobal`
 	@font-face {
 		font-family: NunitoSans-Regular;
-		src: url('${NunitoSansFont}');
+		src: url('${nunitoSansFont}');
 	}
 	@font-face {
 		font-family: Flamenco-Regular;
-		src: url('${FlamencoFont}');
+		src: url('${flamencoFont}');
 	}
 `;
 
-// styled component
 const StyledContent = styled.div`
 	font-family: Flamenco-Regular;
 	font-size: 28px;
