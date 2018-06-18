@@ -4,11 +4,16 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension'; // development mode
+import { composeWithDevTools } from 'redux-devtools-extension';
 
+import env from '../libs/env';
 import reducer from '../reducers';
 
-const makeStore = (initialState, options) => createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
+const { NODE_ENV } = env;
+
+const middleware = NODE_ENV === 'production' ? applyMiddleware(thunk) : composeWithDevTools(applyMiddleware(thunk));
+
+const configureStore = (initialState, options) => createStore(reducer, initialState, middleware);
 
 class MyApp extends App {
 	static async getInitialProps({ Component, router, ctx }) {
@@ -31,4 +36,4 @@ class MyApp extends App {
 	}
 }
 
-export default withRedux(makeStore)(MyApp);
+export default withRedux(configureStore)(MyApp);
