@@ -1,11 +1,15 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet, injectGlobal } from 'styled-components';
+import htmlescape from 'htmlescape';
 
 import NunitoSansFont from '../static/fonts/NunitoSans/NunitoSans-Regular.ttf';
 import Favicon16 from '../static/favicons/16.ico';
 
 import style from './style';
+
+const { NODE_ENV } = process.env;
+const env = { NODE_ENV };
 
 injectGlobal`
 	@font-face {
@@ -37,6 +41,7 @@ export default class MyDocument extends Document {
 				</Head>
 				<body className="custom_class" style={style.body}>
 					<Main />
+					<script dangerouslySetInnerHTML={{ __html: `__ENV__ = ${htmlescape(env)}` }} />
 
 					<NextScript />
 					{/* JavaScript (influential sequence) */}

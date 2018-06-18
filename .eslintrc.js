@@ -10,6 +10,7 @@ module.exports = {
         "comma-dangle": ["error", "never"],
         "no-shadow": "off",
         "class-methods-use-this": ["error", { "exceptMethods": ["render"] }],
-        "max-len": "off"
+        "max-len": "off",
+        "no-underscore-dangle": ["error", {"allow": ["__ENV__"]}]
     }
 };
