@@ -1,7 +1,11 @@
-import React, { Component } from 'react'; // Must be in scope
+import React, { Component } from 'react'; // must be in scope
 import { Menu } from 'antd';
-import mzLogger from '../src/libs/mz-logger';
-import bodyStyle from '../pages/bodyStyle';
+import mzLogger from '../libs/mz-logger';
+
+// style
+import style from '../pages/style';
+
+// static file
 import MenuLogo from '../static/icons/24.png';
 
 const log = mzLogger('TopMenu');
@@ -26,7 +30,7 @@ class TopMenu extends Component {
 		return (
 			<React.Fragment>
 				<Menu mode="horizontal" selectedKeys={[current]} onClick={this.handleClick.bind(this)} style={{
-					fontFamily: bodyStyle.fontFamily,
+					fontFamily: style.body.fontFamily,
 					fontSize: '14px'
 				}}>
 					<Menu.Item key="home">

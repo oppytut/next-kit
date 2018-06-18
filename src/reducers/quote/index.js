@@ -6,7 +6,7 @@ import {
 	DEL_QUOTE
 } from './action';
 
-export default function quoteReducer(state = [], action = {}) {
+const quoteReducer = (state = [], action = {}) => {
 	switch (action.type) {
 	case SET_QUOTES:
 		return action.quotes;
@@ -31,4 +31,6 @@ export default function quoteReducer(state = [], action = {}) {
 	default:
 		return state;
 	}
-}
+};
+
+export default quoteReducer;

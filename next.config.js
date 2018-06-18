@@ -24,6 +24,6 @@ module.exports = Object.assign(
 		}
 	})),
 	{
-		distDir: '.build'
+		distDir: '../.build' // calculated from src directiory
 	}
 );

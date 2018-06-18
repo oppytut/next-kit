@@ -1,10 +1,15 @@
-import React, { Component } from 'react'; // Must be in scope
+import React, { Component } from 'react'; // must be in scope
 import { Card } from 'antd';
 import styled, { injectGlobal } from 'styled-components';
+
+// static file
 import NunitoSansFont from '../static/fonts/NunitoSans/NunitoSans-Regular.ttf';
 import FlamencoFont from '../static/fonts/Flamenco/Flamenco-Regular.ttf';
-import bodyStyle from '../pages/bodyStyle';
 
+// style
+import style from '../pages/style';
+
+// inject to CSS
 injectGlobal`
 	@font-face {
 		font-family: NunitoSans-Regular;
@@ -16,6 +21,7 @@ injectGlobal`
 	}
 `;
 
+// styled component
 const StyledContent = styled.div`
 	font-family: Flamenco-Regular;
 	font-size: 28px;
@@ -27,7 +33,7 @@ const StyledInventor = styled.div`
 	margin-top: 15px;
 	font-size: 12px;
 	text-align: center;
-	font-family: ${bodyStyle.fontFamily};
+	font-family: ${style.body.fontFamily};
 `;
 
 class Post extends Component {

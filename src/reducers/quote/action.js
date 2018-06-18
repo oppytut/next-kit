@@ -1,14 +1,6 @@
-import debug from 'debug';
+import mzLogger from '../../libs/mz-logger';
 
-const logName = 'quote action';
-const log = {
-	trace: debug(`${logName}:trace`),
-	debug: debug(`${logName}:debug`),
-	log: debug(`${logName}:log`),
-	info: debug(`${logName}:info`),
-	warn: debug(`${logName}:warn`),
-	error: debug(`${logName}:error`)
-};
+const log = mzLogger('quoteAction');
 
 export const SET_QUOTES = 'SET_QUOTES';
 export const SET_QUOTE = 'SET_QUOTE';
@@ -33,72 +25,48 @@ function parseJson(response) {
 }
 
 /**
- * reducer operation
+ * to store
  */
 
-export function setQuotes(quotes) {
-	return { type: SET_QUOTES, quotes };
-}
-
-export function setQuote(quote) {
-	return { type: SET_QUOTE, quote };
-}
-
-export function addQuote(quote) {
-	return { type: ADD_QUOTE, quote };
-}
-
-export function updateQuote(quote) {
-	return { type: UPDATE_QUOTE, quote };
-}
-
-export function delQuote(quote) {
-	return { type: DEL_QUOTE, quote };
-}
+export const setQuotes = quotes => ({ type: SET_QUOTES, quotes });
+export const setQuote = quote => ({ type: SET_QUOTE, quote });
+export const addQuote = quote => ({ type: ADD_QUOTE, quote });
+export const updateQuote = quote => ({ type: UPDATE_QUOTE, quote });
+export const delQuote = quote => ({ type: DEL_QUOTE, quote });
 
 /**
- * api operation
+ * to api
  */
 
 const host = 'http://localhost:8000';
 
-export function getQuotes(data) {
-	return fetch(`${host}/api/quote`)
-		.then(handleResponse)
-		.then(parseJson);
-}
+export const getQuotes = data => fetch(`${host}/api/quote`)
+	.then(handleResponse)
+	.then(parseJson);
 
-export function getQuote(id) {
-	return fetch(`${host}/api/quote/${id}`)
-		.then(handleResponse)
-		.then(parseJson);
-}
+export const getQuote = id => fetch(`${host}/api/quote/${id}`)
+	.then(handleResponse)
+	.then(parseJson);
 
-export function quoteQuote(data) {
-	return fetch(`${host}/api/quote`, {
-		method: 'quote',
-		body: JSON.stringify(data),
-		headers: { 'Content-Type': 'application/json' }
-	})
-		.then(handleResponse)
-		.then(parseJson);
-}
+export const quoteQuote = data => fetch(`${host}/api/quote`, {
+	method: 'quote',
+	body: JSON.stringify(data),
+	headers: { 'Content-Type': 'application/json' }
+})
+	.then(handleResponse)
+	.then(parseJson);
 
-export function putQuote(data) {
-	return fetch(`${host}/api/quote/${data.id}`, {
-		method: 'put',
-		body: JSON.stringify(data),
-		headers: { 'Content-Type': 'application/json' }
-	})
-		.then(handleResponse)
-		.then(parseJson);
-}
+export const putQuote = data => fetch(`${host}/api/quote/${data.id}`, {
+	method: 'put',
+	body: JSON.stringify(data),
+	headers: { 'Content-Type': 'application/json' }
+})
+	.then(handleResponse)
+	.then(parseJson);
 
-export function deleteQuote(id) {
-	return fetch(`${host}/api/quote/${id}`, {
-		method: 'delete',
-		headers: { 'Content-Type': 'application/json' }
-	})
-		.then(handleResponse)
-		.then(parseJson);
-}
+export const deleteQuote = id => fetch(`${host}/api/quote/${id}`, {
+	method: 'delete',
+	headers: { 'Content-Type': 'application/json' }
+})
+	.then(handleResponse)
+	.then(parseJson);
