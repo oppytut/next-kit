@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; // must be in scope
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import styled from 'styled-components';
 import isEmpty from 'is-empty';
 import validator from 'validator';
@@ -184,6 +184,7 @@ class QuoteForm extends Component {
 						errors: {},
 						validateStatus: {}
 					});
+					message.success('Quote successfully published!');
 					log.info('submitted');
 				})
 				.catch((err) => {
