@@ -46,10 +46,11 @@ class QuoteList extends Component {
 	render() {
 		const { page } = this.state;
 		const { quote } = this.props;
+		const revQuote = quote.reverse();
 
 		return (
 			<React.Fragment>
-				{quote.slice(((page.current - 1) * page.size), page.current * page.size).map((item, index) => (
+				{revQuote.slice(((page.current - 1) * page.size), page.current * page.size).map((item, index) => (
 					<Quote key={index} content={item.content} inventor={item.inventor} />
 				))}
 				<StyledPagination
