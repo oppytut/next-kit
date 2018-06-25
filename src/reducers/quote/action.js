@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 import mzLogger from '../../libs/mz-logger';
 
 const log = mzLogger('quoteAction');
@@ -8,31 +9,31 @@ export const ADD_QUOTE = 'ADD_QUOTE';
 export const UPDATE_QUOTE = 'UPDATE_QUOTE';
 export const DEL_QUOTE = 'DEL_QUOTE';
 
-function handleResponse(response) {
-	if(response.ok) {
-		log.info('response ok');
+const handleResponse = async (response) => {
+	if (response.ok) {
+		log.info('return response');
 		return response;
 	}
 
-	log.warn('response error');
 	const err = new Error(response.statusText);
-	err.response = response;
+	await response.json().then((e) => {
+		err.errors = e.err.errors;
+	});
+	log.warn('return err response');
 	throw err;
-}
+};
 
-function parseJson(response) {
-	return response.json();
-}
+const parseJson = response => response.json();
 
 /**
  * to store
  */
 
-export const setQuotes = quotes => ({ type: SET_QUOTES, quotes });
+export const setQuotes = quote => ({ type: SET_QUOTES, quote });
 export const setQuote = quote => ({ type: SET_QUOTE, quote });
 export const addQuote = quote => ({ type: ADD_QUOTE, quote });
 export const updateQuote = quote => ({ type: UPDATE_QUOTE, quote });
-export const delQuote = quote => ({ type: DEL_QUOTE, quote });
+export const delQuote = id => ({ type: DEL_QUOTE, id });
 
 /**
  * to api
@@ -40,7 +41,7 @@ export const delQuote = quote => ({ type: DEL_QUOTE, quote });
 
 const host = 'http://localhost:8000';
 
-export const getQuotes = data => fetch(`${host}/api/quote`)
+export const getQuotes = () => fetch(`${host}/api/quote`)
 	.then(handleResponse)
 	.then(parseJson);
 
@@ -48,8 +49,8 @@ export const getQuote = id => fetch(`${host}/api/quote/${id}`)
 	.then(handleResponse)
 	.then(parseJson);
 
-export const quoteQuote = data => fetch(`${host}/api/quote`, {
-	method: 'quote',
+export const postQuote = data => fetch(`${host}/api/quote`, {
+	method: 'post',
 	body: JSON.stringify(data),
 	headers: { 'Content-Type': 'application/json' }
 })
