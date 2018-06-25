@@ -18,35 +18,41 @@ injectGlobal`
 	}
 `;
 
-const StyledContent = styled.div`
+const StyledCard = styled(Card)`
+	margin-top: 10px;
+`;
+
+const Content = styled.div`
 	font-family: Flamenco-Regular;
 	font-size: 28px;
 	letter-spacing: 0.5px;
 	text-align: center;
 `;
 
-const StyledInventor = styled.div`
+const Inventor = styled.div`
 	margin-top: 15px;
 	font-size: 12px;
 	text-align: center;
 	font-family: ${style.body.fontFamily};
 `;
 
-class Post extends Component {
+class Quote extends Component {
 	render() {
+		const { content, inventor } = this.props;
+
 		return (
 			<React.Fragment>
-				<Card className={this.props.className}>
-					<StyledContent>
-						Sesungguhnya, shalat seseorang yang paling utama adalah di rumahnya, kecuali shalat fardu.
-					</StyledContent>
-					<StyledInventor>
-						HR. Al-Bukhari (731) dan Muslim (781)
-					</StyledInventor>
-				</Card>
+				<StyledCard>
+					<Content>
+						{content}
+					</Content>
+					<Inventor>
+						{inventor}
+					</Inventor>
+				</StyledCard>
 			</React.Fragment>
 		);
 	}
 }
 
-export default Post;
+export default Quote;

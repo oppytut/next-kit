@@ -5,22 +5,32 @@ import styled from 'styled-components';
 
 import style from './style';
 
-import TopMenu from '../components/topMenu';
-import Post from '../components/post';
+import QuoteList from '../containers/quoteList';
 
-const StyledContent = styled.div`
+import TopMenu from '../components/topMenu';
+import NewQuote from '../components/newQuote';
+
+const Content = styled.div`
 	min-height: 560px;
-	padding-top: 10px;
 	padding-bottom: 10px;
 	background: #f9f9f9;
 `;
 
-const StyledFooter = styled.div`
+const Footer = styled.div`
 	min-height: 50px;
 	text-align: center;
 	font-size: 12px;
 	padding-top: 10px;
 	border-top: 1px solid #e8e8e8;
+`;
+
+const LoveIcon = styled(Icon)`
+	color: #ff06ee;
+`;
+
+const GithubLink = styled.a`
+	text-decoration: none;
+	color: ${style.body.color}
 `;
 
 const Index = () => (
@@ -33,22 +43,18 @@ const Index = () => (
 			<TopMenu />
 		</div>
 
-		<StyledContent>
+		<Content>
 			<Row type="flex" justify="center">
 				<Col xs={22} sm={19} md={16} lg={13} xl={10}>
-					<Post />
+					<NewQuote />
+					<QuoteList />
 				</Col>
 			</Row>
-		</StyledContent>
+		</Content>
 
-		<StyledFooter>
-			Knitted with <Icon type="heart" style={{
-				color: '#ff06ee'
-			}} /> by <a href="https://github.com/oppytut" target="__blank" style={{
-				textDecoration: 'none',
-				color: style.body.color
-			}}> Oppytut </a>
-		</StyledFooter>
+		<Footer>
+			Knitted with <LoveIcon type="heart" /> by <GithubLink href="https://github.com/oppytut" target="__blank"> Oppytut </GithubLink>
+		</Footer>
 	</React.Fragment>
 );
 
