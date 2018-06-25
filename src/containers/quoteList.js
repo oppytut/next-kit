@@ -26,7 +26,7 @@ class QuoteList extends Component {
 		this.state = {
 			page: {
 				current: 1,
-				size: 3
+				size: 5
 			}
 		};
 	}
