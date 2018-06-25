@@ -1,12 +1,23 @@
 import React, { Component } from 'react'; // must be in scope
 import { Menu } from 'antd';
+import styled from 'styled-components';
+
 import mzLogger from '../libs/mz-logger';
 
 import style from '../pages/style';
 
-import menuLogo from '../static/icons/24.png';
+import logo24 from '../static/icons/24.png';
 
 const log = mzLogger('TopMenu');
+
+const StyledMenu = styled(Menu)`
+	font-family: ${style.body.fontFamily};
+	font-size: 14px;
+`;
+
+const MenuLogo = styled.img`
+	margin-right: 5px;
+`;
 
 class TopMenu extends Component {
 	constructor(props) {
@@ -18,8 +29,8 @@ class TopMenu extends Component {
 	}
 
 	handleClick(e) {
+		log.info('change current state to', e.key);
 		this.setState({ current: e.key });
-		log.info('current state change to', e.key);
 	}
 
 	render() {
@@ -27,15 +38,9 @@ class TopMenu extends Component {
 
 		return (
 			<React.Fragment>
-				<Menu mode="horizontal" selectedKeys={[current]} onClick={this.handleClick.bind(this)} style={{
-					fontFamily: style.body.fontFamily,
-					fontSize: '14px'
-				}}>
+				<StyledMenu mode="horizontal" selectedKeys={[current]} onClick={this.handleClick.bind(this)}>
 					<Menu.Item key="home">
-						<img src={menuLogo} alt="" style={{
-							marginRight: '5px'
-						}} />
-						Petuah
+						<MenuLogo src={logo24} alt="" />Petuah
 					</Menu.Item>
 					<Menu.Item key="signUp" style={{
 						float: 'right'
@@ -47,7 +52,7 @@ class TopMenu extends Component {
 					}}>
 						Log In
 					</Menu.Item>
-				</Menu>
+				</StyledMenu>
 			</React.Fragment>
 		);
 	}
