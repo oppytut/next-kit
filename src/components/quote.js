@@ -1,22 +1,10 @@
 import React, { Component } from 'react'; // must be in scope
-import { Card } from 'antd';
-import styled, { injectGlobal } from 'styled-components';
-
-import nunitoSansFont from '../static/fonts/NunitoSans/NunitoSans-Regular.ttf';
-import flamencoFont from '../static/fonts/Flamenco/Flamenco-Regular.ttf';
+import { Card, Row, Col } from 'antd';
+import styled from 'styled-components';
 
 import style from '../pages/style';
 
-injectGlobal`
-	@font-face {
-		font-family: NunitoSans-Regular;
-		src: url('${nunitoSansFont}');
-	}
-	@font-face {
-		font-family: Flamenco-Regular;
-		src: url('${flamencoFont}');
-	}
-`;
+import QuoteDropDown from './quoteDropDown';
 
 const StyledCard = styled(Card)`
 	margin-top: 10px;
@@ -42,17 +30,24 @@ const Inventor = styled.div`
 
 class Quote extends Component {
 	render() {
-		const { content, inventor } = this.props;
+		const { content, inventor, id } = this.props;
 
 		return (
 			<React.Fragment>
 				<StyledCard>
-					<Content>
-						{content}
-					</Content>
-					<Inventor>
-						{inventor}
-					</Inventor>
+					<Row>
+						<Col span={20} offset={2}>
+							<Content>{content}</Content>
+						</Col>
+						<Col span={2} style={{ textAlign: 'right' }}>
+							<QuoteDropDown id={id} />
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							<Inventor>{inventor}</Inventor>
+						</Col>
+					</Row>
 				</StyledCard>
 			</React.Fragment>
 		);

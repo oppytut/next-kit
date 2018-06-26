@@ -32,7 +32,9 @@ class QuoteList extends Component {
 	}
 
 	componentDidMount() {
-		this.props.getQuotes().then(res => this.props.setQuotes(res.quotes));
+		this.props.getQuotes().then((res) => {
+			this.props.setQuotes(res.quotes);
+		});
 	}
 
 	changePage(next) {
@@ -46,12 +48,12 @@ class QuoteList extends Component {
 	render() {
 		const { page } = this.state;
 		const { quote } = this.props;
-		const revQuote = quote.reverse();
 
 		return (
 			<React.Fragment>
-				{revQuote.slice(((page.current - 1) * page.size), page.current * page.size).map((item, index) => (
-					<Quote key={index} content={item.content} inventor={item.inventor} />
+				{/* immutable */}
+				{[...quote].reverse().slice((page.current - 1) * page.size, page.current * page.size).map((item, index) => (
+					<Quote key={index} id={item.id} content={item.content} inventor={item.inventor} />
 				))}
 				<StyledPagination
 					current={page.current}
