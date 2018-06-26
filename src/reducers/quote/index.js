@@ -5,7 +5,7 @@ import {
 	SET_QUOTE,
 	ADD_QUOTE,
 	UPDATE_QUOTE,
-	DEL_QUOTE
+	DEL_QUOTE,
 } from './action';
 
 const log = mzLogger('quoteReducer');

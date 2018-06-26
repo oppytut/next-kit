@@ -52,7 +52,7 @@ export const getQuote = id => fetch(`${host}/api/quote/${id}`)
 export const postQuote = data => fetch(`${host}/api/quote`, {
 	method: 'post',
 	body: JSON.stringify(data),
-	headers: { 'Content-Type': 'application/json' }
+	headers: { 'Content-Type': 'application/json' },
 })
 	.then(handleResponse)
 	.then(parseJson);
@@ -60,14 +60,14 @@ export const postQuote = data => fetch(`${host}/api/quote`, {
 export const putQuote = data => fetch(`${host}/api/quote/${data.id}`, {
 	method: 'put',
 	body: JSON.stringify(data),
-	headers: { 'Content-Type': 'application/json' }
+	headers: { 'Content-Type': 'application/json' },
 })
 	.then(handleResponse)
 	.then(parseJson);
 
 export const deleteQuote = id => fetch(`${host}/api/quote/${id}`, {
 	method: 'delete',
-	headers: { 'Content-Type': 'application/json' }
+	headers: { 'Content-Type': 'application/json' },
 })
 	.then(handleResponse)
 	.then(parseJson);

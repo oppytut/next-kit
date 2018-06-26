@@ -6,7 +6,7 @@ const logger = logName => ({
 	log: debug(`${logName}:log`),
 	info: debug(`${logName}:info`),
 	warn: debug(`${logName}:warn`),
-	error: debug(`${logName}:error`)
+	error: debug(`${logName}:error`),
 });
 
 export default logger;

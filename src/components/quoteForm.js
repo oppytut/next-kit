@@ -50,7 +50,7 @@ const formSanitizer = {
 
 		log.info('return sanitized inventor');
 		return item;
-	}
+	},
 };
 
 const formRules = {
@@ -66,7 +66,7 @@ const formRules = {
 					log.info(`return content validation result, ${isValid}`);
 					return isValid;
 				},
-				message: 'Must only use letters, numbers, spaces, and punctuation!'
+				message: 'Must only use letters, numbers, spaces, and punctuation!',
 			},
 			{
 				validator: (v) => {
@@ -75,9 +75,9 @@ const formRules = {
 					log.info(`return content validation length result, ${isValid}`);
 					return isValid;
 				},
-				message: 'Must be between 10 and 100 characters!'
-			}
-		]
+				message: 'Must be between 10 and 100 characters!',
+			},
+		],
 	},
 	inventor: {
 		required: [true, 'Can not be empty!'],
@@ -91,7 +91,7 @@ const formRules = {
 					log.info(`return inventor validation result, ${isValid}`);
 					return isValid;
 				},
-				message: 'Must only use letters, numbers, spaces, and punctuation!'
+				message: 'Must only use letters, numbers, spaces, and punctuation!',
 			},
 			{
 				validator: (v) => {
@@ -100,10 +100,10 @@ const formRules = {
 					log.info(`return content validation length result, ${isValid}`);
 					return isValid;
 				},
-				message: 'Must be between 5 and 20 characters!'
-			}
-		]
-	}
+				message: 'Must be between 5 and 20 characters!',
+			},
+		],
+	},
 };
 
 const formValidator = (quote) => {
@@ -131,7 +131,7 @@ class QuoteForm extends Component {
 		this.state = {
 			quote: {},
 			errors: {},
-			validateStatus: {}
+			validateStatus: {},
 		};
 	}
 
@@ -182,17 +182,19 @@ class QuoteForm extends Component {
 					this.setState({
 						quote: {},
 						errors: {},
-						validateStatus: {}
+						validateStatus: {},
 					});
 					message.success('Quote successfully published!');
-					log.info('submitted');
+					log.info('set success message, create quote');
 				})
 				.catch((err) => {
 					log.info('set errors');
+					// form errors
 					for (const item of Object.getOwnPropertyNames(formRules)) {
 						errors[item] = err.errors[item].message;
 						validateStatus[item] = 'error';
 					}
+					if (!isEmpty(err.message)) message.error(err.message); // global err
 					this.setState({ errors, validateStatus });
 				});
 		}
@@ -243,12 +245,12 @@ class QuoteForm extends Component {
 
 QuoteForm.propTypes = {
 	addQuote: PropTypes.func.isRequired,
-	postQuote: PropTypes.func.isRequired
+	postQuote: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
 	addQuote: quote => dispatch(addQuote(quote)),
-	postQuote
+	postQuote,
 });
 
 const ConnectedQuoteForm = connect(null, mapDispatchToProps)(QuoteForm);

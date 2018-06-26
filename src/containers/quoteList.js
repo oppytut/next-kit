@@ -10,7 +10,7 @@ import Quote from '../components/quote';
 
 import {
 	setQuotes,
-	getQuotes
+	getQuotes,
 } from '../reducers/quote/action';
 
 const log = mzLogger('QuoteList');
@@ -26,8 +26,8 @@ class QuoteList extends Component {
 		this.state = {
 			page: {
 				current: 1,
-				size: 5
-			}
+				size: 5,
+			},
 		};
 	}
 
@@ -65,17 +65,17 @@ class QuoteList extends Component {
 }
 
 const mapStateToProps = state => ({
-	quote: state.quote
+	quote: state.quote,
 });
 
 QuoteList.propTypes = {
 	setQuotes: PropTypes.func.isRequired,
-	getQuotes: PropTypes.func.isRequired
+	getQuotes: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
 	setQuotes: quotes => dispatch(setQuotes(quotes)),
-	getQuotes
+	getQuotes,
 });
 
 const ConnectedQuoteList = connect(mapStateToProps, mapDispatchToProps)(QuoteList);

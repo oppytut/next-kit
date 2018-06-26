@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import quote from './quote';
 
 const reducer = () => combineReducers({ // exporting combineReducers function
-	quote
+	quote,
 });
 
 export default reducer();

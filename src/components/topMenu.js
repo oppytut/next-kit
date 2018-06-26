@@ -24,7 +24,7 @@ class TopMenu extends Component {
 		super(props);
 
 		this.state = {
-			current: 'home'
+			current: 'home',
 		};
 	}
 
@@ -38,17 +38,17 @@ class TopMenu extends Component {
 
 		return (
 			<React.Fragment>
-				<StyledMenu mode="horizontal" selectedKeys={[current]} onClick={this.handleClick.bind(this)}>
+				<StyledMenu mode="horizontal" selectedKeys={[current]} onClick={this.changeCurrent.bind(this)}>
 					<Menu.Item key="home">
 						<MenuLogo src={logo24} alt="" />Petuah
 					</Menu.Item>
 					<Menu.Item key="signUp" style={{
-						float: 'right'
+						float: 'right',
 					}}>
 						Sign Up
 					</Menu.Item>
 					<Menu.Item key="logIn" style={{
-						float: 'right'
+						float: 'right',
 					}}>
 						Log In
 					</Menu.Item>
