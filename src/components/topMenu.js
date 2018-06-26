@@ -28,7 +28,7 @@ class TopMenu extends Component {
 		};
 	}
 
-	handleClick(e) {
+	changeCurrent(e) {
 		log.info('change current state to', e.key);
 		this.setState({ current: e.key });
 	}
