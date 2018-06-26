@@ -4,6 +4,9 @@ const style = {
 		fontSize: '14px',
 		fontFamily: 'NunitoSans-Regular',
 	},
+	globalColor: {
+		hover: '#40a9ff',
+	},
 };
 
 export default style;
