@@ -120,7 +120,7 @@ const formValidator = (quote) => {
 		}
 	}
 
-	log.info('return form errors and status value', { errors, validateStatus });
+	log.info(`return form errors and status value ${{ errors, validateStatus }}`);
 	return { errors, validateStatus };
 };
 

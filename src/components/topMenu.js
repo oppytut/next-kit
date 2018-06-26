@@ -29,7 +29,7 @@ class TopMenu extends Component {
 	}
 
 	changeCurrent(e) {
-		log.info('change current state to', e.key);
+		log.info(`change current state to ${e.key}`);
 		this.setState({ current: e.key });
 	}
 

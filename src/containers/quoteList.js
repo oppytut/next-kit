@@ -41,7 +41,7 @@ class QuoteList extends Component {
 		const { page } = this.state;
 
 		page.current = next;
-		log.info('change current page state to', next);
+		log.info(`change current page state to ${next}`);
 		this.setState({ page });
 	}
 
