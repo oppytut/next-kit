@@ -4,6 +4,7 @@ import { ServerStyleSheet, injectGlobal } from 'styled-components';
 import htmlescape from 'htmlescape';
 
 import nunitoSansFont from '../static/fonts/NunitoSans/NunitoSans-Regular.ttf';
+import flamencoFont from '../static/fonts/Flamenco/Flamenco-Regular.ttf';
 import favicon16 from '../static/favicons/16.ico';
 
 import style from './style';
@@ -12,6 +13,10 @@ const { NODE_ENV } = process.env;
 const env = { NODE_ENV };
 
 injectGlobal`
+	@font-face {
+		font-family: Flamenco-Regular;
+		src: url('${flamencoFont}');
+	}
 	@font-face {
 		font-family: NunitoSans-Regular;
 		src: url('${nunitoSansFont}');

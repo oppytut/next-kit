@@ -24,7 +24,7 @@ const StyledCard = styled(Card)`
 
 const Content = styled.div`
 	font-family: Flamenco-Regular;
-	font-size: 28px;
+	font-size: 26px;
 	letter-spacing: 0.5px;
 	text-align: center;
 `;
@@ -34,6 +34,10 @@ const Inventor = styled.div`
 	font-size: 12px;
 	text-align: center;
 	font-family: ${style.body.fontFamily};
+
+	&:hover {
+		color: ${style.globalColor.hover};
+	}
 `;
 
 class Quote extends Component {

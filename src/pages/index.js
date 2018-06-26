@@ -30,7 +30,11 @@ const LoveIcon = styled(Icon)`
 
 const GithubLink = styled.a`
 	text-decoration: none;
-	color: ${style.body.color}
+	color: ${style.body.color};
+
+	&:hover {
+		color: ${style.globalColor.hover};
+	}
 `;
 
 const Index = () => (
