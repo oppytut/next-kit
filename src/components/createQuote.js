@@ -2,18 +2,18 @@ import React from 'react'; // must be in scope
 import { Card } from 'antd';
 import styled from 'styled-components';
 
-import QuoteForm from './quoteForm';
+import CreateQuoteForm from './quoteForm/createForm';
 
 const StyledCard = styled(Card)`
 	margin-top: 10px;
 `;
 
-const NewQuote = () => (
+const CreateQuote = () => (
 	<React.Fragment>
 		<StyledCard>
-			<QuoteForm />
+			<CreateQuoteForm />
 		</StyledCard>
 	</React.Fragment>
 );
 
-export default NewQuote;
+export default CreateQuote;

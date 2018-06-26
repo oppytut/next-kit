@@ -40,11 +40,20 @@ class QuoteDropDown extends Component {
 			});
 	}
 
+	changeEditMode(edit) {
+		this.props.changeEditMode(edit);
+	}
+
 	render() {
 		const ListMenu = (
 			<Menu>
 				<MenuItem>
-					<a rel="noopener noreferrer">Edit</a>
+					<a
+						rel="noopener noreferrer"
+						onClick={this.changeEditMode.bind(this, true)}
+					>
+						Edit
+					</a>
 				</MenuItem>
 				<MenuItem>
 					<Popconfirm

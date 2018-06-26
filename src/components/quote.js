@@ -2,11 +2,20 @@ import React, { Component } from 'react'; // must be in scope
 import { Card, Row, Col } from 'antd';
 import styled from 'styled-components';
 
+import mzLogger from '../libs/mz-logger';
+
 import style from '../pages/style';
 
 import QuoteDropDown from './quoteDropDown';
+import EditQuoteForm from './quoteForm/editForm';
 
-const StyledCard = styled(Card)`
+const log = mzLogger('Quote');
+
+const DisplayedQuote = styled(Card)`
+	margin-top: 10px;
+`;
+
+const EditForm = styled(Card)`
 	margin-top: 10px;
 `;
 
@@ -29,26 +38,58 @@ const Inventor = styled.div`
 `;
 
 class Quote extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			edit: false,
+		};
+	}
+
+	changeEditMode(edit) {
+		this.setState({ edit });
+		log.trace(`edit mode changed to ${edit}`);
+	}
+
 	render() {
 		const { content, inventor, id } = this.props;
+		const { edit } = this.state;
+
+		const displayedQuote = (
+			<DisplayedQuote>
+				<Row>
+					<Col span={20} offset={2}>
+						<Content>{content}</Content>
+					</Col>
+					<Col span={2} style={{ textAlign: 'right' }}>
+						<QuoteDropDown
+							id={id}
+							changeEditMode={this.changeEditMode.bind(this)}
+						/>
+					</Col>
+				</Row>
+				<Row>
+					<Col>
+						<Inventor>{inventor}</Inventor>
+					</Col>
+				</Row>
+			</DisplayedQuote>
+		);
+
+		const editForm = (
+			<EditForm>
+				<EditQuoteForm
+					content={content}
+					inventor={inventor}
+					id={id}
+					changeEditMode={this.changeEditMode.bind(this)}
+				/>
+			</EditForm>
+		);
 
 		return (
 			<React.Fragment>
-				<StyledCard>
-					<Row>
-						<Col span={20} offset={2}>
-							<Content>{content}</Content>
-						</Col>
-						<Col span={2} style={{ textAlign: 'right' }}>
-							<QuoteDropDown id={id} />
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							<Inventor>{inventor}</Inventor>
-						</Col>
-					</Row>
-				</StyledCard>
+				{!edit ? displayedQuote : editForm}
 			</React.Fragment>
 		);
 	}
