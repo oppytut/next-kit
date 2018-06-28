@@ -10,7 +10,7 @@ import mzLogger from '../../libs/mz-logger';
 import { addQuote, postQuote } from '../../reducers/quote/action';
 
 import {
-	formRules,
+	formItem,
 	formValidator,
 } from './.config';
 
@@ -63,7 +63,7 @@ class CreateQuoteForm extends Component {
 
 		if (isEmpty(quote)) return true;
 
-		for (const item of Object.getOwnPropertyNames(formRules)) {
+		for (const item of formItem) {
 			if (isEmpty(quote[item])) return true;
 		}
 
@@ -93,7 +93,7 @@ class CreateQuoteForm extends Component {
 				.catch((err) => {
 					log.info('set errors');
 					// form errors
-					for (const item of Object.getOwnPropertyNames(formRules)) {
+					for (const item of formItem) {
 						errors[item] = err.errors[item].message;
 						validateStatus[item] = 'error';
 					}

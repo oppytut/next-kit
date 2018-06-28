@@ -7,6 +7,8 @@ import validateWithMongoose from '../../libs/validate-with-mongoose';
 
 const log = mzLogger('quoteFormCofig');
 
+export const formItem = ['content', 'inventor'];
+
 export const formSanitizer = {
 	content: (unsanitized) => {
 		let item = unsanitized;
@@ -93,7 +95,7 @@ export const formValidator = (quote) => {
 	const validateStatus = {};
 
 	// get errors message
-	for (const item of Object.getOwnPropertyNames(formRules)) {
+	for (const item of formItem) {
 		errors[item] = validateWithMongoose(formSanitizer[item](quote[item]), formRules[item], item);
 		if (isEmpty(errors[item])) {
 			delete errors[item]; // remove undefined errors message
