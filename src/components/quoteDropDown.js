@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; // must be in scope
-import { Icon, Dropdown, Menu, Popconfirm, message } from 'antd';
+import { Icon, Dropdown, Menu, Modal, message } from 'antd';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -7,10 +7,7 @@ import isEmpty from 'is-empty';
 
 import mzLogger from '../helpers/mz-logger';
 
-import {
-	delQuote,
-	deleteQuote,
-} from '../reducers/quote/action';
+import { delQuote, deleteQuote } from '../reducers/quote/action';
 
 import style from '../pages/style';
 
@@ -25,26 +22,59 @@ const DownIcon = styled(Icon)`
 const MenuItem = Menu.Item;
 
 class QuoteDropDown extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			loading: false,
+		};
+	}
+
+	changeEditMode(edit) {
+		this.props.isEditMode(edit);
+	}
+
+	showDeleteConfirm() {
+		const deleteQuote = this.deleteQuote.bind(this);
+
+		Modal.confirm({
+			title: 'Are you sure delete this quote?',
+			okText: 'Yes',
+			okType: 'danger',
+			cancelText: 'No',
+			onOk() {
+				deleteQuote();
+			},
+		});
+
+		log.info('show delete confirm modal');
+	}
+
 	deleteQuote() {
+		this.setState({ loading: true });
+
 		const { id } = this.props;
 
 		this.props.deleteQuote(id)
 			.then((res) => {
 				this.props.delQuote(res.quote.id);
 				message.success('Quote successfully deleted!');
-				log.info('set success message, delete quote');
+
+				log.info('set success message, quote deleted');
 			})
 			.catch((err) => {
-				log.info('set errors');
 				if (!isEmpty(err.message)) message.error(err.message); // global err
+
+				log.info('set err response');
+			})
+			.finally(() => {
+				this.setState({ loading: false });
 			});
 	}
 
-	changeEditMode(edit) {
-		this.props.changeEditMode(edit);
-	}
-
 	render() {
+		const { loading } = this.state;
+
 		const ListMenu = (
 			<Menu>
 				<MenuItem>
@@ -56,25 +86,22 @@ class QuoteDropDown extends Component {
 					</a>
 				</MenuItem>
 				<MenuItem>
-					<Popconfirm
-						title="Are you sure delete this quote?"
-						onConfirm={this.deleteQuote.bind(this)}
-						okText="Yes"
-						cancelText="No"
+					<a
+						rel="noopener noreferrer"
+						onClick={this.showDeleteConfirm.bind(this)}
 					>
-						<a
-							rel="noopener noreferrer"
-						>
-							Delete
-						</a>
-					</Popconfirm>
+						Delete
+					</a>
 				</MenuItem>
 			</Menu>
 		);
 
 		return (
-			<Dropdown overlay={ListMenu} trigger={['click']}>
-				<DownIcon type="down" className="ant-dropdown-link" />
+			<Dropdown overlay={ListMenu} trigger={loading ? [] : ['click']}>
+				<DownIcon
+					type={loading ? 'loading' : 'down'}
+					className="ant-dropdown-link"
+				/>
 			</Dropdown>
 		);
 	}
