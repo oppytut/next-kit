@@ -19,6 +19,7 @@ const handleResponse = async (response) => {
 	const err = new Error(response.statusText);
 	await response.json().then((e) => {
 		err.errors = e.err.errors;
+		err.message = e.err.message;
 	});
 	log.warn('return err response');
 	throw err;
