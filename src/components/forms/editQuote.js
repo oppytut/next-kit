@@ -5,14 +5,14 @@ import isEmpty from 'is-empty';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import mzLogger from '../../libs/mz-logger';
+import mzLogger from '../../helpers/mz-logger';
 
 import { updateQuote, putQuote } from '../../reducers/quote/action';
 
 import {
-	formRules,
+	formItem,
 	formValidator,
-} from './.config';
+} from './config/quote';
 
 const log = mzLogger('EditQuoteForm');
 
@@ -36,6 +36,7 @@ class EditQuoteForm extends Component {
 		super(props);
 
 		this.state = {
+			loading: false,
 			quote: {},
 			errors: {},
 			validateStatus: {},
@@ -48,77 +49,95 @@ class EditQuoteForm extends Component {
 	}
 
 	changeEditMode(edit) {
-		this.props.changeEditMode(edit);
+		this.props.isEditMode(edit);
 	}
 
-	changeContent(e) { // triggered on change
-		const { value } = e.target;
+	changeValue(e) { // triggered on change
+		const { value, name } = e.target;
 		const { quote, errors, validateStatus } = this.state;
 
-		quote.content = value;
-		delete errors.content;
-		delete validateStatus.content;
+		quote[name] = value;
+		delete errors[name];
+		delete validateStatus[name];
 		this.setState({ quote, errors, validateStatus });
 	}
 
-	changeInventor(e) { // triggered on change
-		const { value } = e.target;
-		const { quote, errors, validateStatus } = this.state;
-
-		quote.inventor = value;
-		delete errors.inventor;
-		delete validateStatus.inventor;
-		this.setState({ quote, errors, validateStatus });
-	}
-
-	isSubmitDisabled() { // triggered on change
+	isDisSubmit() { // triggered on change
 		const { quote } = this.state;
 
 		if (isEmpty(quote)) return true;
 
-		for (const item of Object.getOwnPropertyNames(formRules)) {
+		for (const item of formItem) {
 			if (isEmpty(quote[item])) return true;
 		}
 
 		return false;
 	}
 
-	submit() {
-		const { quote } = this.state;
+	clear() {
+		this.setState({
+			quote: {},
+			errors: {},
+			validateStatus: {},
+		});
 
+		log.info('form cleared');
+	}
+
+	submit() {
+		this.setState({ loading: true });
+
+		const { quote } = this.state;
 		const { errors, validateStatus } = formValidator(quote);
 
 		if (!isEmpty(errors)) {
+			this.setState({
+				loading: false,
+				errors,
+				validateStatus,
+			});
+
 			log.info('change errors and validateStatus state');
-			this.setState({ errors, validateStatus });
 		} else {
 			this.props.putQuote(quote)
 				.then((res) => {
 					this.props.updateQuote(res.quote);
-					this.setState({
-						quote: {},
-						errors: {},
-						validateStatus: {},
-					});
-					this.changeEditMode(false);
+					this.clear();
 					message.success('Quote successfully updated!');
-					log.info('set success message, update quote');
+					this.changeEditMode(false);
+
+					log.info('set success message, quote updated');
 				})
 				.catch((err) => {
-					log.info('set errors');
-					// form errors
-					for (const item of Object.getOwnPropertyNames(formRules)) {
-						errors[item] = err.errors[item].message;
-						validateStatus[item] = 'error';
+					if (!isEmpty(err.errors)) {
+						// form errors
+						for (const item of formItem) {
+							if (!isEmpty(err.errors[item])) {
+								errors[item] = err.errors[item].message;
+								validateStatus[item] = 'error';
+							}
+						}
+						this.setState({ errors, validateStatus });
+					} else if (!isEmpty(err.message)) {
+						// global err
+						message.error(err.message);
 					}
-					if (!isEmpty(err.message)) message.error(err.message); // global err
-					this.setState({ errors, validateStatus });
+
+					log.info('set err response');
+				})
+				.finally(() => {
+					this.setState({ loading: false });
 				});
 		}
 	}
 
 	render() {
-		const { quote, errors, validateStatus } = this.state;
+		const {
+			loading,
+			quote,
+			errors,
+			validateStatus,
+		} = this.state;
 
 		return (
 			<Form>
@@ -128,11 +147,13 @@ class EditQuoteForm extends Component {
 					hasFeedback
 				>
 					<ContentInput
+						name="content"
 						placeholder="Add quote ..."
 						autosize={{ minRows: 2 }}
 						style={{ resize: 'none' }}
-						onChange={this.changeContent.bind(this)}
+						onChange={this.changeValue.bind(this)}
 						value={quote.content}
+						disabled={loading}
 					/>
 				</StyledFormItem>
 				<StyledFormItem
@@ -141,16 +162,19 @@ class EditQuoteForm extends Component {
 					hasFeedback
 				>
 					<Input
+						name="inventor"
 						placeholder="Inventor"
-						onChange={this.changeInventor.bind(this)}
+						onChange={this.changeValue.bind(this)}
 						value={quote.inventor}
+						disabled={loading}
 					/>
 				</StyledFormItem>
 				<StyledFormItem>
 					<Button
 						type="primary"
 						onClick={this.submit.bind(this)}
-						disabled={this.isSubmitDisabled()}
+						disabled={this.isDisSubmit()}
+						loading={loading}
 					>
 						Save
 					</Button>

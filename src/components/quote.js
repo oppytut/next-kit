@@ -2,11 +2,12 @@ import React, { Component } from 'react'; // must be in scope
 import { Card, Row, Col } from 'antd';
 import styled from 'styled-components';
 
-import style from '../pages/style';
 import mzLogger from '../helpers/mz-logger';
 
 import QuoteDropDown from './quoteDropDown';
-import EditQuoteForm from './quoteForm/editForm';
+import EditQuoteForm from './forms/editQuote';
+
+import style from '../pages/style';
 
 const log = mzLogger('Quote');
 
@@ -47,7 +48,8 @@ class Quote extends Component {
 
 	changeEditMode(edit) {
 		this.setState({ edit });
-		log.trace(`edit mode changed to ${edit}`);
+
+		log.trace(`change edit mode to ${edit}`);
 	}
 
 	render() {
@@ -63,7 +65,7 @@ class Quote extends Component {
 					<Col span={2} style={{ textAlign: 'right' }}>
 						<QuoteDropDown
 							id={id}
-							changeEditMode={this.changeEditMode.bind(this)}
+							isEditMode={this.changeEditMode.bind(this)}
 						/>
 					</Col>
 				</Row>
@@ -81,7 +83,7 @@ class Quote extends Component {
 					content={content}
 					inventor={inventor}
 					id={id}
-					changeEditMode={this.changeEditMode.bind(this)}
+					isEditMode={this.changeEditMode.bind(this)}
 				/>
 			</EditForm>
 		);
