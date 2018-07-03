@@ -8,7 +8,7 @@ import style from './style';
 import QuoteList from '../containers/quoteList';
 
 import TopMenu from '../components/topMenu';
-import CreateQuote from '../components/createQuote';
+import AddQuote from '../components/addQuote';
 
 const Content = styled.div`
 	min-height: 560px;
@@ -50,7 +50,7 @@ const Index = () => (
 		<Content>
 			<Row type="flex" justify="center">
 				<Col xs={22} sm={19} md={16} lg={13} xl={10}>
-					<CreateQuote />
+					<AddQuote />
 					<QuoteList />
 				</Col>
 			</Row>

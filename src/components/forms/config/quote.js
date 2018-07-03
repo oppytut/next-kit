@@ -1,15 +1,13 @@
 import isEmpty from 'is-empty';
 import validator from 'validator';
 
-import mzLogger from '../../libs/mz-logger';
-import removePunctuation from '../../libs/remove-punctuation';
-import validateWithMongoose from '../../libs/validate-with-mongoose';
+import mzLogger from '../../../helpers/mz-logger';
+import removePunctuation from '../../../helpers/remove-punctuation';
+import validateWithMongoose from '../../../helpers/validate-with-mongoose';
 
 const log = mzLogger('quoteFormCofig');
 
-export const formItem = ['content', 'inventor'];
-
-export const formSanitizer = {
+export const formSanitizer = { // manual type from server
 	content: (unsanitized) => {
 		let item = unsanitized;
 
@@ -37,8 +35,9 @@ export const formSanitizer = {
 	},
 };
 
-export const formRules = {
+export const formRules = { // manual type from server
 	content: {
+		type: String,
 		required: [true, 'Can not be empty!'],
 		validate: [
 			{
@@ -50,7 +49,7 @@ export const formRules = {
 					log.info(`return content validation result, ${isValid}`);
 					return isValid;
 				},
-				message: 'Must only use letters, numbers, spaces, and punctuation!',
+				message: 'Must only use letters, numbers, spaces, or punctuation!',
 			},
 			{
 				validator: (v) => {
@@ -64,6 +63,7 @@ export const formRules = {
 		],
 	},
 	inventor: {
+		type: String,
 		required: [true, 'Can not be empty!'],
 		validate: [
 			{
@@ -75,7 +75,7 @@ export const formRules = {
 					log.info(`return inventor validation result, ${isValid}`);
 					return isValid;
 				},
-				message: 'Must only use letters, numbers, spaces, and punctuation!',
+				message: 'Must only use letters, numbers, spaces, or punctuation!',
 			},
 			{
 				validator: (v) => {
@@ -89,6 +89,8 @@ export const formRules = {
 		],
 	},
 };
+
+export const formItem = Object.getOwnPropertyNames(formRules); // manual type from server
 
 export const formValidator = (quote) => {
 	const errors = {};
@@ -104,6 +106,6 @@ export const formValidator = (quote) => {
 		}
 	}
 
-	log.info(`return form errors and status value ${{ errors, validateStatus }}`);
+	log.info('return form errors and status');
 	return { errors, validateStatus };
 };
