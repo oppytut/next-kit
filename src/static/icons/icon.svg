@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.50711805"
-     inkscape:cx="123.9855"
+     inkscape:cx="-167.85976"
      inkscape:cy="550.90214"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -53,7 +53,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:none;fill-opacity:1;stroke:none;stroke-width:0.11467066;stroke-opacity:1"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.11467066;stroke-opacity:1"
        id="rect856"
        width="43.574848"
        height="43.574848"
@@ -64,14 +64,14 @@
        ry="3.2608695" />
     <text
        id="text831"
-       y="161.46579"
-       x="65.131393"
+       y="161.54199"
+       x="65.334595"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#00aeff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50.79999924px;font-family:Quantum;-inkscape-font-specification:Quantum;fill:#00aeff;fill-opacity:1;stroke-width:0.26458332"
-         y="161.46579"
-         x="65.131393"
+         y="161.54199"
+         x="65.334595"
          id="tspan829"
-         sodipodi:role="line">E</tspan></text>
+         sodipodi:role="line">P</tspan></text>
   </g>
 </svg>
