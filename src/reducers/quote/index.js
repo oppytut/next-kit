@@ -1,4 +1,4 @@
-import mzLogger from '../../libs/mz-logger';
+import mzLogger from '../../helpers/mz-logger';
 
 import {
 	SET_QUOTES,

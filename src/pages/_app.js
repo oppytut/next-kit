@@ -6,7 +6,8 @@ import withRedux from 'next-redux-wrapper';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import env from '../libs/env';
+import env from '../helpers/env';
+
 import reducer from '../reducers';
 
 const { NODE_ENV } = env;

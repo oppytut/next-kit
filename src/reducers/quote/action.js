@@ -1,5 +1,6 @@
 import fetch from 'cross-fetch';
-import mzLogger from '../../libs/mz-logger';
+
+import mzLogger from '../../helpers/mz-logger';
 
 const log = mzLogger('quoteAction');
 

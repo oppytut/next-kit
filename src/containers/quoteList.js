@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import mzLogger from '../libs/mz-logger';
+import mzLogger from '../helpers/mz-logger';
 
 import Quote from '../components/quote';
 

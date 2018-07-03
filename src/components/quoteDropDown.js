@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import isEmpty from 'is-empty';
 
-import mzLogger from '../libs/mz-logger';
+import mzLogger from '../helpers/mz-logger';
 
 import {
 	delQuote,

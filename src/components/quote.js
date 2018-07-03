@@ -2,9 +2,8 @@ import React, { Component } from 'react'; // must be in scope
 import { Card, Row, Col } from 'antd';
 import styled from 'styled-components';
 
-import mzLogger from '../libs/mz-logger';
-
 import style from '../pages/style';
+import mzLogger from '../helpers/mz-logger';
 
 import QuoteDropDown from './quoteDropDown';
 import EditQuoteForm from './quoteForm/editForm';
