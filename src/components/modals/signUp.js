@@ -16,6 +16,7 @@ class SignUpModal extends Component {
 	}
 
 	close() { // execute props
+		this.disableSubmit(true);
 		this.props.onClose();
 	}
 

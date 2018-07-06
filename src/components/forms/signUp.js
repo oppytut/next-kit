@@ -43,6 +43,10 @@ class SignUpForm extends Component {
 		};
 	}
 
+	componentDidMount() {
+		this.props.isDisSubmit(this.isDisSubmit());
+	}
+
 	changeValue(e) { // triggered on change
 		const { value, name } = e.target;
 		const { user, errors, validateStatus } = this.state;
@@ -73,6 +77,7 @@ class SignUpForm extends Component {
 			errors: {},
 			validateStatus: {},
 		});
+		this.props.isDisSubmit(this.isDisSubmit());
 
 		log.info('form cleared');
 	}
@@ -108,7 +113,6 @@ class SignUpForm extends Component {
 		} else {
 			this.props.signUp(user)
 				.then((res) => {
-					this.clear();
 					message.success('Registration successful!');
 
 					log.info('set success message, user created');
@@ -184,12 +188,12 @@ class SignUpForm extends Component {
 						placeholder="Password"
 						onChange={this.changeValue.bind(this)}
 						value={user.password}
-						type={!show.password && 'password'}
+						type={!show.password ? 'password' : 'text'}
 						prefix={<Icon type="lock" />}
 						suffix={<EyeIcon
 							type={show.password ? 'eye' : 'eye-o'}
 							onClick={this.showHideItem.bind(this, 'password')}
-							color={show.password && style.globalColor.hover}
+							color={show.password ? style.globalColor.hover : ''}
 						/>}
 					/>
 				</StyledFormItem>
@@ -203,12 +207,12 @@ class SignUpForm extends Component {
 						placeholder="Confirm password ..."
 						onChange={this.changeValue.bind(this)}
 						value={user.passConfirm}
-						type={!show.passConfirm && 'password'}
+						type={!show.passConfirm ? 'password' : 'text'}
 						prefix={<Icon type="lock" />}
 						suffix={<EyeIcon
 							type={show.passConfirm ? 'eye' : 'eye-o'}
 							onClick={this.showHideItem.bind(this, 'passConfirm')}
-							color={show.passConfirm && style.globalColor.hover}
+							color={show.passConfirm ? style.globalColor.hover : ''}
 						/>}
 					/>
 				</StyledFormItem>

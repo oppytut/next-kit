@@ -43,6 +43,10 @@ class LogInForm extends Component {
 		};
 	}
 
+	componentDidMount() {
+		this.props.isDisSubmit(this.isDisSubmit());
+	}
+
 	changeValue(e) { // triggered on change
 		const { value, name } = e.target;
 		const { user, errors, validateStatus } = this.state;
@@ -69,10 +73,11 @@ class LogInForm extends Component {
 
 	clear() {
 		this.setState({
-			quote: {},
+			user: {},
 			errors: {},
 			validateStatus: {},
 		});
+		this.props.isDisSubmit(this.isDisSubmit());
 
 		log.info('form cleared');
 	}
@@ -119,7 +124,6 @@ class LogInForm extends Component {
 		} else {
 			this.props.logIn(user)
 				.then(() => {
-					this.clear();
 					message.success('Login successful!');
 
 					log.info('set success message, login');
@@ -210,12 +214,12 @@ class LogInForm extends Component {
 						placeholder="Password"
 						onChange={this.changeValue.bind(this)}
 						value={user.password}
-						type={!show.password && 'password'}
+						type={!show.password ? 'password' : 'text'}
 						prefix={<Icon type="lock" />}
 						suffix={<EyeIcon
 							type={show.password ? 'eye' : 'eye-o'}
 							onClick={this.showHideItem.bind(this, 'password')}
-							color={show.password && style.globalColor.hover}
+							color={show.password ? style.globalColor.hover : ''}
 						/>}
 					/>
 				</StyledFormItem>
