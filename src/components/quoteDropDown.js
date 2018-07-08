@@ -14,6 +14,8 @@ import style from '../pages/style';
 const log = mzLogger('QuoteDropDown');
 
 const DownIcon = styled(Icon)`
+	color: ${props => props.color};
+
 	&:hover {
 		color: ${style.globalColor.hover};
 	}
@@ -101,6 +103,7 @@ class QuoteDropDown extends Component {
 				<DownIcon
 					type={loading ? 'loading' : 'down'}
 					className="ant-dropdown-link"
+					color={loading ? style.globalColor.hover : style.body.color}
 				/>
 			</Dropdown>
 		);
