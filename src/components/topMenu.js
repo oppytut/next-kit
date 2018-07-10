@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import mzLogger from '../helpers/mz-logger';
 
 import style from '../pages/style';
-import logo24 from '../static/icons/24.png';
 
 import LogInModal from './modals/logIn';
 import SignUpModal from './modals/signUp';
@@ -61,7 +60,7 @@ class TopMenu extends Component {
 
 		const HomeItem = (
 			<Menu.Item key="home">
-				<MenuLogo src={logo24} alt="" />Petuah
+				<MenuLogo src="/static/icons/24.png" alt="" />Petuah
 			</Menu.Item>
 		);
 
