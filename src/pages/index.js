@@ -40,6 +40,9 @@ const GithubLink = styled.a`
 const Index = () => (
 	<div style={style.root}>
 		<Head>
+			{/* Favicon */}
+			<link rel="icon" href='/static/favicons/16.ico' size="16x16" />
+
 			<title>Petuah</title>
 		</Head>
 
