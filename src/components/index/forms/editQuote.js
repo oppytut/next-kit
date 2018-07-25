@@ -5,9 +5,9 @@ import isEmpty from 'is-empty';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import mzLogger from '../../helpers/mz-logger';
+import mzLogger from '../../../helpers/mz-logger';
 
-import { updateQuote, putQuote } from '../../reducers/quote/action';
+import { updateQuote, putQuote } from '../../../reducers/quote/action';
 
 import {
 	formItem,

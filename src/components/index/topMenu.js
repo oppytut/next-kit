@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import isEmpty from 'is-empty';
 import { connect } from 'react-redux';
 
-import mzLogger from '../helpers/mz-logger';
+import mzLogger from '../../helpers/mz-logger';
 
-import style from '../pages/style';
+import style from '../../pages/style';
 
 import LogInModal from './modals/logIn';
 import SignUpModal from './modals/signUp';
 
-import { logOut } from '../reducers/auth/action';
+import { logOut } from '../../reducers/auth/action';
 
 const log = mzLogger('TopMenu');
 

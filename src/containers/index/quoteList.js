@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import isEmpty from 'is-empty';
 
-import mzLogger from '../helpers/mz-logger';
+import mzLogger from '../../helpers/mz-logger';
 
-import Quote from '../components/quote';
+import Quote from '../../components/index/quote';
 
-import style from '../pages/style';
+import style from '../../pages/style';
 
 import {
 	setQuotes,
 	getQuotes,
-} from '../reducers/quote/action';
+} from '../../reducers/quote/action';
 
 const log = mzLogger('QuoteList');
 

@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import isEmpty from 'is-empty';
 
-import mzLogger from '../helpers/mz-logger';
+import mzLogger from '../../helpers/mz-logger';
 
-import { delQuote, deleteQuote } from '../reducers/quote/action';
+import { delQuote, deleteQuote } from '../../reducers/quote/action';
 
-import style from '../pages/style';
+import style from '../../pages/style';
 
 const log = mzLogger('QuoteDropDown');
 

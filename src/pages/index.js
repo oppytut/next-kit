@@ -5,10 +5,10 @@ import styled from 'styled-components';
 
 import style from './style';
 
-import QuoteList from '../containers/quoteList';
+import QuoteList from '../containers/index/quoteList';
 
-import TopMenu from '../components/topMenu';
-import AddQuote from '../components/addQuote';
+import TopMenu from '../components/index/topMenu';
+import AddQuote from '../components/index/addQuote';
 
 const Content = styled.div`
 	min-height: 560px;

@@ -1,9 +1,9 @@
 import isEmpty from 'is-empty';
 import validator from 'validator';
 
-import mzLogger from '../../../helpers/mz-logger';
-import { removePassChar } from '../../../helpers/remove-punctuation';
-import validateWithMongoose from '../../../helpers/validate-with-mongoose';
+import mzLogger from '../../../../helpers/mz-logger';
+import { removePassChar } from '../../../../helpers/remove-punctuation';
+import validateWithMongoose from '../../../../helpers/validate-with-mongoose';
 
 const log = mzLogger('userFormCofig');
 

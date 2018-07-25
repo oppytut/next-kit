@@ -5,12 +5,12 @@ import isEmpty from 'is-empty';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import mzLogger from '../../helpers/mz-logger';
+import mzLogger from '../../../helpers/mz-logger';
 
-import style from '../../pages/style';
+import style from '../../../pages/style';
 import { formItem, formValidator } from './config/user';
 
-import { signUp } from '../../reducers/auth/action';
+import { signUp } from '../../../reducers/auth/action';
 
 const log = mzLogger('SignUpForm');
 
