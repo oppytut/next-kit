@@ -7,7 +7,7 @@ import mzLogger from '../../helpers/mz-logger';
 import QuoteDropDown from './quoteDropDown';
 import EditQuoteForm from './forms/editQuote';
 
-import style from '../../pages/style';
+import style from '../../styles/index';
 
 const log = mzLogger('Quote');
 

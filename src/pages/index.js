@@ -3,7 +3,7 @@ import React from 'react';
 import { Row, Col, Icon } from 'antd';
 import styled from 'styled-components';
 
-import style from './style';
+import style from '../styles/index';
 
 import QuoteList from '../containers/index/quoteList';
 

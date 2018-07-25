@@ -9,7 +9,7 @@ import mzLogger from '../../helpers/mz-logger';
 
 import Quote from '../../components/index/quote';
 
-import style from '../../pages/style';
+import style from '../../styles/index';
 
 import {
 	setQuotes,

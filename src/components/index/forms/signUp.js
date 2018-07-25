@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import mzLogger from '../../../helpers/mz-logger';
 
-import style from '../../../pages/style';
+import style from '../../../styles/index';
 import { formItem, formValidator } from './config/user';
 
 import { signUp } from '../../../reducers/auth/action';

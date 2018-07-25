@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import mzLogger from '../../helpers/mz-logger';
 
-import style from '../../pages/style';
+import style from '../../styles/index';
 
 import LogInModal from './modals/logIn';
 import SignUpModal from './modals/signUp';

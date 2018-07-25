@@ -9,7 +9,7 @@ import mzLogger from '../../helpers/mz-logger';
 
 import { delQuote, deleteQuote } from '../../reducers/quote/action';
 
-import style from '../../pages/style';
+import style from '../../styles/index';
 
 const log = mzLogger('QuoteDropDown');
 
