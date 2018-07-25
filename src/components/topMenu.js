@@ -16,7 +16,7 @@ import { logOut } from '../reducers/auth/action';
 const log = mzLogger('TopMenu');
 
 const StyledMenu = styled(Menu)`
-	font-family: ${style.body.fontFamily};
+	font-family: ${style.root.fontFamily};
 	font-size: 14px;
 `;
 

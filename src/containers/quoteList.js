@@ -25,7 +25,7 @@ const StyledPagination = styled(Pagination)`
 const Loading = styled.div`
 	margin-top: 10px;
 	font-size: 30px;
-	color: ${style.globalColor.hover};
+	color: ${style.colorHover};
 	text-align: center;
 `;
 

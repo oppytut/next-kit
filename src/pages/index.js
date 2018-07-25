@@ -30,15 +30,15 @@ const LoveIcon = styled(Icon)`
 
 const GithubLink = styled.a`
 	text-decoration: none;
-	color: ${style.body.color};
+	color: ${style.root.color};
 
 	&:hover {
-		color: ${style.globalColor.hover};
+		color: ${style.colorHover};
 	}
 `;
 
 const Index = () => (
-	<React.Fragment>
+	<div style={style.root}>
 		<Head>
 			<title>Petuah</title>
 		</Head>
@@ -59,7 +59,7 @@ const Index = () => (
 		<Footer>
 			Knitted with <LoveIcon type="heart" /> by <GithubLink href="https://github.com/oppytut" target="__blank"> Oppytut </GithubLink>
 		</Footer>
-	</React.Fragment>
+	</div>
 );
 
 export default Index;

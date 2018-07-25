@@ -17,7 +17,7 @@ const DownIcon = styled(Icon)`
 	color: ${props => props.color};
 
 	&:hover {
-		color: ${style.globalColor.hover};
+		color: ${style.colorHover};
 	}
 `;
 
@@ -103,7 +103,7 @@ class QuoteDropDown extends Component {
 				<DownIcon
 					type={loading ? 'loading' : 'down'}
 					className="ant-dropdown-link"
-					color={loading ? style.globalColor.hover : style.body.color}
+					color={loading ? style.colorHover : style.root.color}
 				/>
 			</Dropdown>
 		);

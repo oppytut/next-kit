@@ -23,7 +23,7 @@ const EyeIcon = styled(Icon)`
 	color: ${props => props.color};
 
 	&:hover {
-		color: ${style.globalColor.hover};
+		color: ${style.colorHover};
 	}
 `;
 
@@ -219,7 +219,7 @@ class LogInForm extends Component {
 						suffix={<EyeIcon
 							type={show.password ? 'eye' : 'eye-o'}
 							onClick={this.showHideItem.bind(this, 'password')}
-							color={show.password ? style.globalColor.hover : ''}
+							color={show.password ? style.colorHover : ''}
 						/>}
 					/>
 				</StyledFormItem>

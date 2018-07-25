@@ -3,8 +3,6 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet, injectGlobal } from 'styled-components';
 import htmlescape from 'htmlescape';
 
-import style from './style';
-
 const { NODE_ENV } = process.env;
 const env = { NODE_ENV };
 
@@ -41,7 +39,7 @@ export default class MyDocument extends Document {
 					<link rel='stylesheet' href='/_next/static/style.css' />
 					{styleTags}
 				</Head>
-				<body className="custom_class" style={style.body}>
+				<body className="custom_class">
 					<Main />
 					<script dangerouslySetInnerHTML={{ __html: `__ENV__ = ${htmlescape(env)}` }} />
 

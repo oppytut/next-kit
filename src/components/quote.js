@@ -30,10 +30,10 @@ const Inventor = styled.div`
 	margin-top: 15px;
 	font-size: 12px;
 	text-align: center;
-	font-family: ${style.body.fontFamily};
+	font-family: ${style.root.fontFamily};
 
 	&:hover {
-		color: ${style.globalColor.hover};
+		color: ${style.colorHover};
 	}
 `;
 
