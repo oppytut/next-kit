@@ -193,7 +193,7 @@ class SignUpForm extends Component {
 						suffix={<EyeIcon
 							type={show.password ? 'eye' : 'eye-o'}
 							onClick={this.showHideItem.bind(this, 'password')}
-							color={show.password ? style.colorHover : ''}
+							color={show.password && style.colorHover}
 						/>}
 					/>
 				</StyledFormItem>
@@ -212,7 +212,7 @@ class SignUpForm extends Component {
 						suffix={<EyeIcon
 							type={show.passConfirm ? 'eye' : 'eye-o'}
 							onClick={this.showHideItem.bind(this, 'passConfirm')}
-							color={show.passConfirm ? style.colorHover : ''}
+							color={show.passConfirm && style.colorHover}
 						/>}
 					/>
 				</StyledFormItem>

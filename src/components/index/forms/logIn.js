@@ -219,7 +219,7 @@ class LogInForm extends Component {
 						suffix={<EyeIcon
 							type={show.password ? 'eye' : 'eye-o'}
 							onClick={this.showHideItem.bind(this, 'password')}
-							color={show.password ? style.colorHover : ''}
+							color={show.password && style.colorHover}
 						/>}
 					/>
 				</StyledFormItem>
