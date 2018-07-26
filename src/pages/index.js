@@ -41,9 +41,11 @@ const Index = () => (
 	<div style={style.root}>
 		<Head>
 			<title>Petuah</title>
-
 			{/* Favicon */}
 			<link rel="icon" href='/static/favicons/16.ico' size="16x16" />
+			{/* Add CSS here! */}
+			<link rel='stylesheet' href='/_next/static/style.css' /> {/* antd css */}
+			{/* Add Script here! */}
 		</Head>
 
 		<div> {/* header */}

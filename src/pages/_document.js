@@ -32,9 +32,9 @@ export default class MyDocument extends Document {
 		return (
 			<html>
 				<Head>
-					{/* CSS */}
-					<link rel='stylesheet' href='/_next/static/style.css' />
 					{styleTags}
+					{/* Add CSS here! */}
+					{/* Add Script here! */}
 				</Head>
 
 				<body className="custom_class">
@@ -42,7 +42,7 @@ export default class MyDocument extends Document {
 					<script dangerouslySetInnerHTML={{ __html: `__ENV__ = ${htmlescape(env)}` }} />
 
 					<NextScript />
-					{/* JavaScript (influential sequence) */}
+					{/* Add Script here! (influential sequence) */}
 				</body>
 			</html>
 		);
