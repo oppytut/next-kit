@@ -44,7 +44,8 @@ const Index = () => (
 			{/* Favicon */}
 			<link rel="icon" href='/static/favicons/16.ico' size="16x16" />
 			{/* Add CSS here! */}
-			<link rel='stylesheet' href='/_next/static/style.css' /> {/* antd css */}
+			{/* antd css */}
+			<link rel='stylesheet' href='/_next/static/style.css' />
 			{/* Add Script here! */}
 		</Head>
 
